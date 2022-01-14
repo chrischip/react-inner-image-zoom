@@ -67,6 +67,7 @@ const InnerImageZoom = ({
       handleLoad({ target: zoomImg.current });
       zoomIn(e.pageX, e.pageY);
     } else {
+      document.body.className = 'waiting';  
       imgProps.current.onLoadCallback = zoomIn.bind(this, e.pageX, e.pageY);
     }
   };
@@ -203,6 +204,7 @@ const InnerImageZoom = ({
     setIsZoomed(true);
     currentMoveType === 'drag' ? initialDrag(pageX, pageY) : initialMove(pageX, pageY);
     afterZoomIn && afterZoomIn();
+    document.body.className = '';   
   };
 
   const zoomOut = () => {
